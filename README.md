@@ -150,6 +150,32 @@ leaf-first and keep the app shippable via View↔Compose interop, so you can sto
 resume at any point. When Claude gets a step wrong, correct it in chat and re-run that one
 command; nothing downstream is committed until you say so.
 
+## How it compares
+
+There are good single-skill XML→Compose converters out there — Google's official
+`migrate-xml-views-to-jetpack-compose` skill and community skills like `aldefy/compose-skill`
+or `new-silvermoon/xml-to-compose-migration`. They're solid at converting **one layout** in
+isolation. `compose-migrator` is built for the harder problem: **migrating a whole app
+without a big-bang rewrite.**
+
+| | A single converter skill | **`compose-migrator`** |
+|---|---|---|
+| **Scope** | One XML layout at a time | Whole-app program: `inventory` → leaf-first backlog → per-layer commands → `cleanup` |
+| **Form factor** | One skill | Full plugin: 10 slash commands + orchestrator agent + auto-format/import hooks + worked example |
+| **Sequencing** | You pick what to convert | Dependency-scored, leaf-first backlog that keeps the app shippable via interop at every step |
+| **Adapt-first** | Matches project conventions | Reads `CLAUDE.md`, your design-system package, an already-migrated screen, and `res/values*/` on **every** command — an existing convention always wins |
+| **Visual parity** | Preview/screenshot diff (single screen) | Required `@Preview` (light + dark) per component/screen, diffed against a legacy baseline — with a static-checklist fallback when no emulator/build is available |
+| **Build-less environments** | Usually assume an emulator/build | First-class: `verify` + an import-check hook catch missing imports when Gradle can't run |
+| **Localization** | Not emphasized | Quality rule: new strings added to **all** `values-*/strings.xml` locales |
+
+**Pick a converter skill** if you just want to translate one screen and move on. **Pick
+`compose-migrator`** if you're migrating a real app over many PRs and want the ordering,
+the interop safety net, convention-matching, and verification handled as a workflow — not
+left to you to remember each time.
+
+(`compose-migrator` composes with those skills rather than replacing them: keep the official
+skill installed and the doctrine here will happily route through it for a given screen.)
+
 ## Learn more
 
 - Plugin details, hooks, and the worked example: [`plugins/compose-migrator/README.md`](plugins/compose-migrator/README.md)

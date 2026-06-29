@@ -31,10 +31,15 @@ Migrate the screen **`$ARGUMENTS`** end-to-end. This is the workhorse command.
    - Dialogs/sheets are state-driven (`var pending by remember { mutableStateOf(...) }`)
      and pinned near the end of the function.
    - Loading/empty/error states handled explicitly.
-5. **Wire the host** — `ComposeView.setContent { AppTheme { FooScreen(...) } }` in the
+5. **Add a `@Preview` (light + dark)** for the screen, populated with realistic sample
+   state — plus a loading/empty variant when those states are non-trivial. This is the
+   artifact you visually diff against the legacy XML in `/compose-migrator:verify`, so
+   it is required, not optional. Wrap it in the project's `AppTheme` so the preview
+   renders with the real tokens.
+6. **Wire the host** — `ComposeView.setContent { AppTheme { FooScreen(...) } }` in the
    existing Activity/Fragment (or the nav destination if navigation is migrated). Hook
    real callbacks to the ViewModel and to navigation.
-6. **Analytics/locale parity** — preserve any screen-view logging and locale handling
+7. **Analytics/locale parity** — preserve any screen-view logging and locale handling
    the legacy screen had.
 
 ## Quality gates

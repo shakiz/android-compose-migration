@@ -40,16 +40,20 @@ bottom-up for this single surface.
 
 6. **Write the stateless screen** — `@Composable fun FooScreen(state, callbacks)`,
    state hoisted, dialogs state-driven and pinned at the end, loading/empty/error
-   handled.
+   handled. **Add a required `@Preview` (light + dark)** wrapped in the project's
+   `AppTheme` with realistic sample state — this is what you visually diff against the
+   legacy XML in step 8.
 
 7. **Wire the host** — `ComposeView.setContent { AppTheme { FooScreen(...) } }` (or the
    nav destination if navigation is already migrated), connecting real ViewModel and
    navigation callbacks. Preserve analytics and locale handling.
 
 8. **Verify** — confirm every new symbol is imported; no `Icons.Filled.*`/raw `Color()`
-   in screen code; new strings in all `values-*/strings.xml`; visual-parity checklist
-   (light + dark). If a build is available, run it and report results honestly; if not,
-   say so.
+   in screen code; new strings in all `values-*/strings.xml`. For **visual parity**,
+   render the screen's `@Preview` against a baseline capture of the legacy XML and diff
+   them (see `/compose-migrator:verify` for how to capture the baseline) — fall back to
+   the side-by-side parity checklist (light + dark) only when no render is available. If
+   a build is available, run it and report results honestly; if not, say so.
 
 ## Constraints
 

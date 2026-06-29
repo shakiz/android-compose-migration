@@ -88,12 +88,15 @@ unambiguous).
   "author": { "name": "Sakhawat Hossain" },
   "license": "MIT",
   "keywords": ["android", "jetpack", "compose", "migration", "xml-views", "kotlin"],
-  "skills": "./skills/",
-  "commands": "./commands/",
-  "agents": ["./agents/"],
   "hooks": "./hooks/hooks.json"
 }
 ```
+
+> Note: `skills/`, `commands/`, and `agents/` are conventional directories that the
+> plugin loader auto-discovers, so they are **not** listed in the manifest (the
+> `agents`/`skills` manifest fields are for *additional* paths and expect a `.md`
+> file / `./`-prefixed dir, not the default directory — listing them fails
+> `claude plugin validate`). Only `hooks` (a file path) is declared explicitly.
 
 **`.claude-plugin/marketplace.json`** (repo root) lists one plugin with a relative
 `source: "./plugins/compose-migrator"`.

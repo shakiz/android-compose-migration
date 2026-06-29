@@ -10,8 +10,8 @@ aligned with the XML theme during the mixed period.
 
 ## Current theming
 
-!`find . -name "themes.xml" -o -name "themes.xml" -path "*night*" -o -name "colors.xml" 2>/dev/null | grep -v build`
-!`grep -rhoE "Theme\\.MaterialComponents|Theme\\.Material3|parent=\"[^\"]*\"" $(find . -name themes.xml 2>/dev/null | grep -v build) 2>/dev/null | head`
+!`find . -path "*/build/*" -prune -o \( -name "themes.xml" -o -name "colors.xml" \) -print 2>/dev/null`
+!`grep -rhoE "Theme\\.MaterialComponents|Theme\\.Material3|parent=\"[^\"]*\"" $(find . -path "*/build/*" -prune -o -name themes.xml -print 2>/dev/null) 2>/dev/null | head`
 
 ## What to do
 

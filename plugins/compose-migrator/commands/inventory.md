@@ -12,15 +12,15 @@ Compose. **Do not edit anything.** Produce a prioritized, leaf-first backlog.
 
 Layout files:
 
-!`find . -path ./build -prune -o -name "*.xml" -path "*/res/layout*" -print 2>/dev/null | head -200`
+!`find . -path "*/build/*" -prune -o -name "*.xml" -path "*/res/layout*" -print 2>/dev/null | head -200`
 
 Navigation graphs:
 
-!`find . -path ./build -prune -o -name "*.xml" -path "*/res/navigation*" -print 2>/dev/null`
+!`find . -path "*/build/*" -prune -o -name "*.xml" -path "*/res/navigation*" -print 2>/dev/null`
 
 Signals (DataBinding, RecyclerView, custom views, existing Compose):
 
-!`grep -rlE "androidx.recyclerview|<layout|ComposeView|setContent\\(|@Composable" --include=*.kt --include=*.xml --include=*.java app src 2>/dev/null | head -100`
+!`grep -rlE "androidx.recyclerview|<layout|ComposeView|setContent\\(|@Composable" --include=*.kt --include=*.xml --include=*.java . 2>/dev/null | grep -v '/build/' | head -100`
 
 Stated conventions:
 

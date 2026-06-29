@@ -12,11 +12,11 @@ consistent and testable.
 
 ViewModel state holders in use:
 
-!`grep -rhoE "StateFlow<|MutableStateFlow|LiveData<|MutableLiveData|mutableStateOf" --include=*.kt app src 2>/dev/null | sort | uniq -c | sort -rn | head`
+!`grep -rhoE "StateFlow<|MutableStateFlow|LiveData<|MutableLiveData|mutableStateOf" --include=*.kt . 2>/dev/null | sort | uniq -c | sort -rn | head`
 
 Existing Compose hosts:
 
-!`grep -rlE "setContent\\(|ComposeView|collectAsStateWithLifecycle|observeAsState" --include=*.kt app src 2>/dev/null | head -40`
+!`grep -rlE "setContent\\(|ComposeView|collectAsStateWithLifecycle|observeAsState" --include=*.kt . 2>/dev/null | grep -v '/build/' | head -40`
 
 ## What to do
 

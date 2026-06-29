@@ -10,7 +10,7 @@ Replace RecyclerView machinery with Compose lazy layouts. Focus: `$ARGUMENTS`.
 
 ## RecyclerViews in the project
 
-!`grep -rlE "RecyclerView|ListAdapter|RecyclerView.Adapter|ViewHolder|DiffUtil" --include=*.kt --include=*.java --include=*.xml app src 2>/dev/null | head -40`
+!`grep -rlE "RecyclerView|ListAdapter|RecyclerView.Adapter|ViewHolder|DiffUtil" --include=*.kt --include=*.java --include=*.xml . 2>/dev/null | grep -v '/build/' | head -40`
 
 ## What to do
 

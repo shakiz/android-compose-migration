@@ -17,7 +17,7 @@ XML nav graphs:
 
 Intent-based navigation:
 
-!`grep -rhoE "Intent\\([^)]*::class|startActivity|setResult\\(|findNavController\\(\\)\\.navigate" --include=*.kt app src 2>/dev/null | sort | uniq -c | sort -rn | head`
+!`grep -rhoE "Intent\\([^)]*::class|startActivity|setResult\\(|findNavController\\(\\)\\.navigate" --include=*.kt . 2>/dev/null | sort | uniq -c | sort -rn | head`
 
 ## What to do
 

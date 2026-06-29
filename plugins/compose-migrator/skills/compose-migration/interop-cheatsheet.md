@@ -48,9 +48,12 @@ surrounding screen can migrate now.
 
 ## Compose inside a Fragment — `fragment-compose`
 
-Add `androidx.fragment:fragment-compose`, then:
+Add `androidx.fragment:fragment-compose`, then (`content` is
+`androidx.fragment.compose.content`):
 
 ```kotlin
+import androidx.fragment.compose.content
+
 class FooFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
@@ -69,6 +72,27 @@ val state by viewModel.uiState.collectAsStateWithLifecycle()
 // LiveData (when that's what the project uses)
 val items by viewModel.items.observeAsState(emptyList())
 ```
+
+## CoordinatorLayout / AppBarLayout scroll behavior
+
+A `CoordinatorLayout` with an `AppBarLayout` + `app:layout_behavior` (collapsing or
+scroll-away toolbar) has no direct Compose container — don't drop the behavior
+silently. Reproduce it with a `Scaffold` whose top bar takes a `TopAppBarScrollBehavior`,
+wired to the content's scroll via `Modifier.nestedScroll`:
+
+```kotlin
+val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+Scaffold(
+    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    topBar = { AppTopBar(title = …, scrollBehavior = scrollBehavior) },
+) { padding -> /* scrollable content */ }
+```
+
+Pick the behavior that matches the legacy `app:layout_scrollFlags`:
+`enterAlwaysScrollBehavior` (scroll-away), `pinnedScrollBehavior` (pinned),
+`exitUntilCollapsedScrollBehavior` (collapsing/large top bar). If a screen genuinely
+doesn't need it (a short, non-scrolling form), it's fine to drop — but say so in the
+parity notes rather than losing it by accident.
 
 ## Theme during the mixed period
 

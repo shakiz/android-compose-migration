@@ -25,6 +25,12 @@ Decision-by-decision rationale, mapped to the four quality rules.
   column's 12dp gap = the original 24dp.
 - We did **not** switch to floating-label M3 outlined fields; `AppTextField` reproduces
   the legacy filled look. Cosmetic changes would be a separate PR.
+- The XML `CoordinatorLayout` + `appbar_scrolling_view_behavior` here only offsets the
+  content below a **pinned** toolbar (the `MaterialToolbar` has no `app:layout_scrollFlags`),
+  so `AppScaffold` with a fixed top bar reproduces it exactly — no scroll behavior is
+  lost. When a legacy screen *does* use collapsing/scroll-away flags, carry it over with
+  `TopAppBarScrollBehavior` + `Modifier.nestedScroll` (see the interop cheatsheet) rather
+  than dropping it.
 
 ## Rule 2 — Reuse existing resources
 

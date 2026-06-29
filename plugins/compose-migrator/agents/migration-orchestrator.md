@@ -7,6 +7,7 @@ description: >-
   to Compose" and wants it done, not just planned.
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: opus
+effort: high
 ---
 
 # Migration orchestrator

@@ -27,6 +27,9 @@ missing=""
 while IFS='|' read -r sym; do
   [ -z "$sym" ] && continue
   if grep -qE "\\b$sym\\b" "$file" 2>/dev/null; then
+    # Any wildcard import (import ….*) is treated as satisfying every symbol — this is
+    # intentional to avoid false positives, at the cost of not catching a genuinely
+    # missing import in a file that uses wildcards.
     if ! grep -qE "^import .*\\b$sym\$|^import .*\\.$sym\$|^import .*\\.\\*" "$file" 2>/dev/null; then
       missing="$missing $sym"
     fi

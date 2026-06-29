@@ -3,7 +3,7 @@
   "name": "compose-migrator",
   "displayName": "XML → Jetpack Compose Migrator",
   "description": "Bottom-up, project-adaptive workflow to migrate Android XML Views to Jetpack Compose, with per-layer commands, an orchestrator agent, and quality gates.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": {
     "name": "Sakhawat Hossain",
     "email": "shakil.py@gmail.com"

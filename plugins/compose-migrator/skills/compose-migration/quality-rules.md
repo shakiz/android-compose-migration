@@ -23,8 +23,14 @@ rather than introducing a raw `Color(...)`.
 label `OutlinedTextField` is not a drop-in for a filled, fixed-height search field.
 Cosmetic improvements belong in a separate follow-up PR, not the migration PR.
 
-A parity check (side-by-side legacy vs migrated, light **and** dark) belongs in the
-PR description.
+**Make parity verifiable, not aspirational.** Every migrated component/screen ships a
+`@Preview` (light **and** dark) wrapped in the project theme — that is the artifact you
+diff against the legacy UI. When an emulator or screenshot-test framework is available,
+capture a baseline of the legacy XML and diff the rendered preview against it (and wire
+the composable into the screenshot suite so parity stays regression-tested); when it
+isn't, fall back to a side-by-side checklist and say parity was checked statically. Put
+the side-by-side (legacy vs migrated, light and dark) in the PR description either way.
+`/compose-migrator:verify` drives this loop.
 
 ## 2. Reuse the project's existing resources
 

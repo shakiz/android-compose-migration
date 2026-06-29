@@ -75,7 +75,7 @@ decisions behind it in [`reference/`](plugins/compose-migrator/reference).
 Pin to a released version for reproducible installs:
 
 ```text
-/plugin marketplace add shakiz/android-compose-migration@v0.1.0
+/plugin marketplace add shakiz/android-compose-migration@v1.0.0
 ```
 
 Then run `/compose-migrator:inventory` in your Android project to get started.

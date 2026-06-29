@@ -2,7 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "android-compose-migration",
   "owner": {
-    "name": "Sakhawat Hossain"
+    "name": "Sakhawat Hossain",
+    "email": "sakhawat.hossain@cefalo.com"
   },
   "description": "Claude Code tooling for migrating Android XML Views to Jetpack Compose, bottom-up.",
   "plugins": [
@@ -11,6 +12,14 @@
       "source": "./plugins/compose-migrator",
       "description": "Bottom-up, project-adaptive workflow to migrate Android XML Views to Jetpack Compose, with one slash command per layer, an orchestrator agent, and quality gates.",
       "version": "0.1.0",
+      "author": {
+        "name": "Sakhawat Hossain",
+        "email": "sakhawat.hossain@cefalo.com"
+      },
+      "homepage": "https://github.com/shakiz/android-compose-migration",
+      "repository": "https://github.com/shakiz/android-compose-migration",
+      "license": "MIT",
+      "category": "migration",
       "keywords": ["android", "jetpack", "compose", "migration", "xml-views", "kotlin"]
     }
   ]

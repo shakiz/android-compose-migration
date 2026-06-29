@@ -1,0 +1,22 @@
+name: Validate plugin
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Validate marketplace manifest
+        run: claude plugin validate . --strict
+
+      - name: Validate compose-migrator plugin
+        run: claude plugin validate ./plugins/compose-migrator --strict

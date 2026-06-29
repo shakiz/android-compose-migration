@@ -3,7 +3,7 @@
   "name": "android-compose-migration",
   "owner": {
     "name": "Sakhawat Hossain",
-    "email": "sakhawat.hossain@cefalo.com"
+    "email": "shakil.py@gmail.com"
   },
   "description": "Claude Code tooling for migrating Android XML Views to Jetpack Compose, bottom-up.",
   "plugins": [
@@ -14,7 +14,7 @@
       "version": "0.1.0",
       "author": {
         "name": "Sakhawat Hossain",
-        "email": "sakhawat.hossain@cefalo.com"
+        "email": "shakil.py@gmail.com"
       },
       "homepage": "https://github.com/shakiz/android-compose-migration",
       "repository": "https://github.com/shakiz/android-compose-migration",
